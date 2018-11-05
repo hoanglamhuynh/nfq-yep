@@ -14,7 +14,7 @@
         }
 
         .hero-main {
-            background: url('./hero.jpg');
+            background: url('./img/hero.jpg');
             background-size: cover;
             background-position-y: bottom;
             background-position-x: 50%;
@@ -22,35 +22,42 @@
         }
 
         .hero-hoian {
-            background: url('./hoian.jpg');
+            background: url('./img/hoian.jpg');
             background-size: cover;
             background-position-y: 90%;
             background-position-x: 50%;
         }
 
         .hero-saigon {
-            background: url('./saigon.jpg');
+            background: url('./img/saigon.jpg');
             background-size: cover;
             background-position-y: 60%;
             background-position-x: 50%;
         }
 
         .hero-mekong {
-            background: url('./floating-market.jpg');
+            background: url('./img/floating-market.jpg');
             background-size: cover;
             background-position-y: 40%;
             background-position-x: 50%;
         }
 
         .hero-conference {
-            background: url('./conference.jpg');
+            background: url('./img/conference.jpg');
             background-size: cover;
             background-position-y: 30%;
             background-position-x: 50%;
         }
 
         .hero-party {
-            background: url('./party.jpg');
+            background: url('./img/party.jpg');
+            background-size: cover;
+            background-position-y: 45%;
+            background-position-x: 50%;
+        }
+
+        .hero-party2 {
+            background: url('./img/party2.jpg');
             background-size: cover;
             background-position-y: 45%;
             background-position-x: 50%;
@@ -91,6 +98,19 @@
 
         .section-subheading {
             background-color: #e1f4fe;
+        }
+
+        .summary-box {
+            display: inline-block;
+            top: 0px;
+            right: 0px;
+            z-index: 100;
+            position: absolute;
+            max-width: 250px;
+        }
+
+        .summary-box.is_stuck {
+            right: 64px;
         }
 
         @media (max-width: 767px) {
@@ -137,6 +157,18 @@
                     </div>
                 </div>
             </form>
+
+            <section class="summary-box">
+                <article class="message is-info">
+                    <div class="message-header">
+                        <p>Info</p>
+                        <button class="delete" aria-label="delete"></button>
+                    </div>
+                    <div class="message-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                </article>
+            </section>
         </div>
     </section>
     <section class="hero is-medium is-primary is-bold">
@@ -184,7 +216,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./hoian2.jpg" style="width: 360px" />
+                                <img src="./img/hoian2.jpg" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
@@ -222,7 +254,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./danang-office.jpg" style="width: 360px" />
+                                <img src="./img/danang-office.jpg" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
@@ -232,12 +264,12 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="visit_nfq_office" checked>
+                                        <input type="radio" name="visit_nfq_danang" checked>
                                         Yes, I would like to visit NFQ office in Da Nang
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="visit_nfq_office">
+                                        <input type="radio" name="visit_nfq_danang">
                                         No thanks
                                     </label>
                                 </div>
@@ -312,7 +344,7 @@
                     </span>
                 </label>
                 <p class="subtitle is-6 has-text-grey">
-                    Spa day - 80 USD/ person - Ladies, you do not want to miss this!! After a long flight with activities, so we come up with an option how to encourage harmony and relaxation. The treatments include Sauna, Body massage with hot stone is perfect for us where you can enjoy 60 min Foot massage; Organic Body scrub, 30 mins; Organic Facial scrub and Clay Mask Pack (Sauna & Hot Spa), 30 mins.
+                    <span class="has-text-primary">Spa day - $80/ person - Ladies</span>, you do not want to miss this!! After a long flight with activities, so we come up with an option how to encourage harmony and relaxation. The treatments include Sauna, Body massage with hot stone is perfect for us where you can enjoy 60 min Foot massage; Organic Body scrub, 30 mins; Organic Facial scrub and Clay Mask Pack (Sauna & Hot Spa), 30 mins.
                 </p>
                 <div class="control">
                     <label class="radio">
@@ -341,7 +373,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./cooking-class.jpg" style="width: 360px" />
+                                <img src="./img/cooking-class.jpg" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
@@ -406,22 +438,22 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./mekong.png" style="width: 360px" />
+                                <img src="./img/mekong.png" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
                             <div class="content">
                                 <p class="subtitle is-6 has-text-grey">
-                                    Glimpse of the Mekong tour - $96 USD/ per person - Get off the beaten path and explore the rural areas of the famous Mekong Delta. You’ll get to meet local families and see how they live on a daily basis, get a glimpse of a busy local market, learn about a rare religion specific to this region, and also enjoy delicious Vietnamese cuisine. We will make sure that this tour is quite special and you will see things you normally wouldn’t. (yes you can ride yourself if you dare) :)
+                                    <span class="has-text-primary">Glimpse of the Mekong tour - $96 USD/ per person</span> - Get off the beaten path and explore the rural areas of the famous Mekong Delta. You’ll get to meet local families and see how they live on a daily basis, get a glimpse of a busy local market, learn about a rare religion specific to this region, and also enjoy delicious Vietnamese cuisine. We will make sure that this tour is quite special and you will see things you normally wouldn’t. (yes you can ride yourself if you dare) :)
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class" checked>
+                                        <input type="radio" name="mekong_trip" checked>
                                         Yes, I would like to explore Mekong Delta
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class">
+                                        <input type="radio" name="mekong_trip">
                                         No thanks
                                     </label>
                                 </div>
@@ -443,7 +475,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./seventeen-saloon-saigon.jpg" style="width: 360px" />
+                                <img src="./img/seventeen-saloon-saigon.jpg" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
@@ -453,12 +485,12 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class" checked>
+                                        <input type="radio" name="seventeen_bar" checked>
                                         Yes yes yes
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class">
+                                        <input type="radio" name="seventeen_bar">
                                         No thanks
                                     </label>
                                 </div>
@@ -500,7 +532,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./software.png" style="width: 360px" />
+                                <img src="./img/software.png" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
@@ -515,17 +547,17 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class" checked>
+                                        <input type="radio" name="conference" checked>
                                         I'd love Business Track
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class">
+                                        <input type="radio" name="conference">
                                         I'd love Technical Track
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class">
+                                        <input type="radio" name="conference">
                                         No thanks
                                     </label>
                                 </div>
@@ -560,9 +592,13 @@
                         10
                     </span>
                     <span class="question-title__question">
-                        13:00 - 15:00 Office Tour
+                        13:00 - 15:00
+                        <br>Office Tour
                     </span>
                 </label>
+                <p class="subtitle is-6 has-text-grey">
+                    Visit our beautiful office, meet our teams and enjoy shopping at Vincom Shopping Mall
+                </p>
                 <div class="control">
                     <label class="radio">
                         <input type="radio" name="visit_nfq_office" checked>
@@ -581,9 +617,13 @@
                         11
                     </span>
                     <span class="question-title__question">
-                        15:00  - 16:00 Finale NFQ got Talent
+                        15:00  - 16:00
+                        <br>Finale NFQ got Talent
                     </span>
                 </label>
+                <p class="subtitle is-6 has-text-grey">
+                    Visit our beautiful office, meet our teams and enjoy shopping at Vincom Shopping Mall
+                </p>
                 <div class="control">
                     <label class="radio">
                         <input type="radio" name="watch_nfq_got_talent" checked>
@@ -602,7 +642,7 @@
                         12
                     </span>
                     <span class="question-title__question">
-                        18:00 - The Party is ON
+                        18:00 - <br>The Party is ON
                     </span>
                 </label>
                 <div class="control">
@@ -624,12 +664,16 @@
             </div>
         </div>
     </section>
+    <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body hero-party2">
+        </div>
+    </section>
     <section class="section">
         <hr>
         <div class="container">
             <div class="columns">
                 <div class="column is-5">
-                    <img src="./ao-dai.jpg" alt="" style="object-position: 0px -100px" />
+                    <img src="./img/ao-dai.jpg" alt="ao-dai-measurement" />
                 </div>
                 <div class="column is-7">
                     <p class="title is-6">
@@ -664,6 +708,18 @@
             </div>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./js/jquery-sticky-kit.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var summaryBox = $('.summary-box');
+            summaryBox.stick_in_parent({
+                parent: 'body',
+                offset_top: 24,
+                spacer: false
+            })
+        });
+    </script>
 </body>
 
 </html>
