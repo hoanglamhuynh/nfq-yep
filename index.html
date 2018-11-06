@@ -19,16 +19,6 @@
             font-weight: bold;
         }
 
-        ::-webkit-scrollbar {
-            -webkit-appearance: none;
-            width: 7px;
-        }
-        ::-webkit-scrollbar-thumb {
-            border-radius: 4px;
-            background-color: rgba(0,0,0,.5);
-            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-        }
-
         .hero-main {
             background: url('./img/hero.jpg');
             background-size: cover;
@@ -175,6 +165,18 @@
 
         .summary-box-mobile {
             display: none;
+        }
+
+        @media (min-width: 769px) {
+            .summary-box ::-webkit-scrollbar {
+                -webkit-appearance: none;
+                width: 7px;
+            }
+            .summary-box ::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background-color: rgba(0,0,0,.5);
+                -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+            }
         }
 
         @media (max-width: 768px) {
@@ -767,7 +769,7 @@
                     </span>
                 </label>
                 <p class="subtitle is-6 has-text-grey paragraph">
-                    <span class="has-text-primary">Cost 89 $ / Person</span> <br>
+                    <span class="has-text-primary">Cost $89 / Person</span> <br>
                     Jump again on the back of a Vespa, zip through the streets of Saiogn by night and join us to experience original vietnamese cuisine. Again, we personally made sure that this is a non-touristy experience where you will get a real insight into original vietnamese food. If you have any dietary needs, don't worry, we will take care of you. Sebastian did test this personally last week - it's amazing, don't hesitate and join us!
                 </p>
                 <div class="control">
