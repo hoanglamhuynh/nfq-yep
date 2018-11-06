@@ -62,7 +62,7 @@
         .hero-conference {
             background: url('./img/conference.jpg');
             background-size: cover;
-            background-position-y: 30%;
+            background-position-y: 70%;
             background-position-x: 50%;
         }
 
@@ -961,7 +961,7 @@
             <br>
             <div class="field progress-indicator"></div>
             <br>
-            Alternative Google Form link: https://foobar
+            In case you have any issue, please submit via this <a href="https://goo.gl/forms/zT3sSYoLmN8bvMR13">form</a>
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -992,6 +992,8 @@
                 ao_dai_neck_size: null, ao_dai_shoulder_size: null,
                 ao_dai_bicept_size: null, ao_dai_arm_length_size: null, ao_dai_waist_size: null
             };
+
+            updateProgress();
 
             function progressCalculator() {
                 var allQuestions = Object.keys(summaryValues);
@@ -1134,7 +1136,8 @@
                     data: summaryValues
                 })
                 .then(function() {
-                    alert('Thank you for submitting form');
+                    alert('Thank you for submitting form. See you there :)');
+                    $('.submit-form').prop('disabled', 'disabled');
                 })
                 .catch(function() {
                     alert('There were an error submitting the form. Please contact us for further assistance');
