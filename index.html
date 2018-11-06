@@ -117,13 +117,13 @@
             max-width: 800px;
         }
 
-        #summary {
+        .trip-summary {
             font-size: 13px;
             max-height: 100px;
             overflow: auto;
         }
 
-        #cost-estimation {
+        .cost-estimation {
             font-size: 13px;
         }
 
@@ -158,6 +158,10 @@
             display: none;
         }
 
+        .footer-summary {
+            columns: 3;
+        }
+
         @media (max-width: 767px) {
             .hero-hoian, .hero-saigon, .hero-mekong, .hero-conference { height: 220px; }
             .hero-party, .hero-party2 { height: 190px; }
@@ -177,6 +181,7 @@
             .text-input-small, .text-input-large { max-width: 100%; }
             .control { padding-left: 5px; }
             .message-header { flex-direction: column;}
+            .footer-summary { columns: 2; }
         }
     </style>
 </head>
@@ -184,7 +189,7 @@
 <body>
     <section class="hero is-info is-large">
         <div class="hero-body hero-main">
-            <img class="hero-gradient-overlay" src="./img/gradient-overlay.png" />
+            <img class="hero-gradient-overlay" src="./img/gradient-overlay.jpg" />
             <p class="title hero-title">
                 NFQ Asia<br>
                 Year End Party<br>
@@ -241,10 +246,10 @@
                         </button>
                     </div>
                     <div class="message-body">
-                        <div id="summary" class="field">
+                        <div class="field trip-summary">
                             (nothing yet)
                         </div>
-                        <div id="cost-estimation" class="field">
+                        <div class="field cost-estimation">
                         </div>
                     </div>
                 </article>
@@ -566,7 +571,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./img/mekong.png" style="width: 360px" />
+                                <img src="./img/mekong.jpg" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
@@ -672,7 +677,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image">
-                                <img src="./img/software.png" style="width: 360px" />
+                                <img src="./img/software.jpg" style="width: 360px" />
                             </figure>
                         </div>
                         <div class="media-content">
@@ -941,8 +946,13 @@
         <div class="container" style="text-align: center">
             <button class="button is-success submit-form">Submit my response</button>
             <br>
-            <br>
             <div class="field progress-indicator"></div>
+            <br>
+            <div class="field trip-summary footer-summary">
+                (nothing yet)
+            </div>
+            <div class="field cost-estimation">
+            </div>
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -1019,7 +1029,7 @@
                 var summaryTemplate = $('#summary-template').html();
                 var template = Handlebars.compile(summaryTemplate);
                 var compiled = template(summaryValues);
-                var display = $('#summary');
+                var display = $('.trip-summary');
 
                 display.html(compiled);
                 display.scrollTop(display.prop('scrollHeight'));
@@ -1032,7 +1042,7 @@
                 var summaryTemplate = $('#cost-estimate-template').html();
                 var template = Handlebars.compile(summaryTemplate);
                 var compiled = template({ cost: costCalculator() });
-                var display = $('#cost-estimation');
+                var display = $('.cost-estimation');
 
                 display.html(compiled);
             }
@@ -1047,7 +1057,7 @@
             }
 
             function validateForm() {
-                if (summaryValues.email === null || summary.name === null) {
+                if (summaryValues.email === null || summaryValues.name === null) {
                     alert('Please fill in Email and Name');
                     $('[data-target-property=email]').get(0).scrollIntoViewIfNeeded();
 
