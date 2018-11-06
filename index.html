@@ -119,7 +119,7 @@
 
         #summary {
             font-size: 13px;
-            max-height: 130px;
+            max-height: 100px;
             overflow: auto;
         }
 
@@ -258,7 +258,7 @@
                     Submit my response
                 </button>
                 <br>
-                <div class="field" id="progress"></div>
+                <div class="field progress-indicator"></div>
             </div>
         </article>
     </section>
@@ -937,6 +937,14 @@
             </div>
         </div>
     </section>
+    <section class="section">
+        <div class="container" style="text-align: center">
+            <button class="button is-success submit-form">Submit my response</button>
+            <br>
+            <br>
+            <div class="field progress-indicator"></div>
+        </div>
+    </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
     <script src="./js/jquery-sticky-kit.min.js"></script>
@@ -1033,7 +1041,7 @@
                 var summaryTemplate = $('#progress-template').html();
                 var template = Handlebars.compile(summaryTemplate);
                 var compiled = template({ progress: progressCalculator() });
-                var display = $('#progress');
+                var display = $('.progress-indicator');
 
                 display.html(compiled);
             }
@@ -1084,6 +1092,11 @@
 
             $('.submit-form').click(function(e) {
                 e.preventDefault();
+                var button = $(this);
+
+                if (button.hasClass('is-loading')) {
+                    return;
+                }
 
                 var validation = validateForm();
 
@@ -1091,11 +1104,7 @@
                     return;
                 }
 
-                var button = $(this);
                 button.addClass('is-loading');
-                if (button.hasClass('is-loading')) {
-                    return;
-                }
 
                 $.ajax({
                     url: 'https://script.google.com/macros/s/AKfycbz1kuDUFZuDcOZ00pPQd-1DGNo4KGzfzzS-mCDPRrz2aOnsmrpF/exec',
