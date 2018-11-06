@@ -64,8 +64,8 @@
             background-position-x: 50%;
         }
 
-        .max-width-400 { max-width: 400px; }
-        .max-width-300 { max-width: 300px; }
+        .text-input-large { max-width: 400px; }
+        .text-input-small { max-width: 300px; }
 
         .title-primary {
             background: #ff6b00;
@@ -154,44 +154,29 @@
             opacity: 0.85;
         }
 
+        .summary-box-mobile {
+            display: none;
+        }
+
         @media (max-width: 767px) {
-            .hero-hoian, .hero-saigon, .hero-mekong, .hero-conference {
-                height: 220px;
-            }
-
-            .hero-party, .hero-party2 {
-                height: 190px;
-            }
-
+            .hero-hoian, .hero-saigon, .hero-mekong, .hero-conference { height: 220px; }
+            .hero-party, .hero-party2 { height: 190px; }
             .hero-title {
                 font-size: 40px;
                 top: 50vh;
                 text-align: right;
             }
-
-            .summary-box {
-                display: none;
-            }
-
-            article.media {
-                flex-direction: column;
-            }
-
-            article .media-left {
-                margin-right: 0px;
-            }
-
-            article .media-content {
-                margin-top: 20px;
-            }
-
-            .max-width-300, .max-width-400 {
-                max-width: 100%;
-            }
-
-            .control {
-                padding-left: 5px;
-            }
+            .summary-box { display: none; }
+            .summary-box-mobile { display: block; }
+            .summary-box-mobile.is_stuck { z-index: 100; }
+            .summary-box-mobile.is_stuck + section { margin-top: 54px; }
+            article.media { flex-direction: column; }
+            article .media-left { margin-right: 0px; }
+            article .media-content { margin-top: 20px; }
+            button { width: 100%; }
+            .text-input-small, .text-input-large { max-width: 100%; }
+            .control { padding-left: 5px; }
+            .message-header { flex-direction: column;}
         }
     </style>
 </head>
@@ -220,11 +205,11 @@
 
             <div class="field">
                 <label class="label" for="inputEmail">Email address (*)</label>
-                <input type="text"
+                <input type="email"
                     data-summary-input
                     data-target-property="email"
                     id="inputEmail"
-                    class="input max-width-400"
+                    class="input text-input-large"
                     placeholder="Valid email address" />
             </div>
             <div class="field">
@@ -232,12 +217,12 @@
                 <input type="text"
                     data-summary-input
                     data-target-property="name"
-                    class="input max-width-400"
+                    class="input text-input-large"
                     placeholder="What shall we call you" />
             </div>
             <div class="field">
                 <label class="label">How many are you?</label>
-                <div class="select is-fullwidth max-width-400">
+                <div class="select is-fullwidth text-input-large">
                     <select data-summary-input data-target-property="pax">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -251,7 +236,7 @@
                 <article class="message is-small">
                     <div class="message-header">
                         <p>Your trip summary</p>
-                        <button type="button" class="button is-primary is-small submit-form">
+                        <button type="button" class="button is-success is-small submit-form">
                             Submit my response
                         </button>
                     </div>
@@ -265,6 +250,17 @@
                 </article>
             </section>
         </div>
+    </section>
+    <section class="summary-box-mobile">
+        <article class="message is-small">
+            <div class="message-header">
+                <button type="button" class="button is-success submit-form">
+                    Submit my response
+                </button>
+                <br>
+                <div class="field" id="progress"></div>
+            </div>
+        </article>
     </section>
     <section class="hero is-medium is-primary is-bold">
         <div class="hero-body hero-hoian">
@@ -362,7 +358,7 @@
                                             type="radio"
                                             name="visit_nfq_danang"
                                             value="Yes" />
-                                        Yes, I would like to visit NFQ office in Da Nang
+                                        Yes, I'd' like to
                                     </label>
                                     <br>
                                     <label class="radio">
@@ -905,37 +901,37 @@
                     <div class="field">
                         <label class="label">Your height (in cm)?</label>
                         <input type="text" data-summary-input data-target-property="ao_dai_your_height"
-                            class="input max-width-300" placeholder="Measured in cm" />
+                            class="input text-input-small" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your weight (in Kilogram)?</label>
                         <input type="text" data-summary-input data-target-property="ao_dai_your_weight"
-                            class="input max-width-300" placeholder="Measured in Kilogram" />
+                            class="input text-input-small" placeholder="Measured in Kilogram" />
                     </div>
                     <div class="field">
                         <label class="label">Your neck size?</label>
                         <input type="text" data-summary-input data-target-property="ao_dai_neck_size"
-                            class="input max-width-300" placeholder="Measured in cm" />
+                            class="input text-input-small" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your shoulder size?</label>
                         <input type="text" data-summary-input data-target-property="ao_dai_shoulder_size"
-                            class="input max-width-300" placeholder="Measured in cm" />
+                            class="input text-input-small" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your Bicept size?</label>
                         <input type="text" data-summary-input data-target-property="ao_dai_bicept_size"
-                            class="input max-width-300" placeholder="Measured in cm" />
+                            class="input text-input-small" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your Arm-length size?</label>
                         <input type="text" data-summary-input data-target-property="ao_dai_arm_length_size"
-                            class="input max-width-300" placeholder="Measured in cm" />
+                            class="input text-input-small" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your Waist size?</label>
                         <input type="text" data-summary-input data-target-property="ao_dai_waist_size"
-                            class="input max-width-300" placeholder="Measured in cm" />
+                            class="input text-input-small" placeholder="Measured in cm" />
                     </div>
                 </div>
             </div>
@@ -946,12 +942,15 @@
     <script src="./js/jquery-sticky-kit.min.js"></script>
     <script>
         $(document).ready(function() {
-            var summaryBox = $('.summary-box');
-            var isOnMobile = window.matchMedia('(max-width: 767px)').matches;
-
-            summaryBox.stick_in_parent({
+            $('.summary-box').stick_in_parent({
                 parent: 'body',
-                offset_top: !isOnMobile ? 24 : 0,
+                offset_top: 24,
+                spacer: false
+            });
+
+            $('.summary-box-mobile').stick_in_parent({
+                parent: 'body',
+                offset_top: 0,
                 spacer: false
             });
 
@@ -960,12 +959,26 @@
                 will_visit_hoi_an: null, will_visit_da_nang_office: null, flight_back_to_saigon: null,
                 spa_day_for_women: null, cooking_class_option: null,
                 mekong_delta_trip: null, rock_music_bar: null,
-                conference_option: null,
+                conference_option: null, saigon_after_dark_food_tour: null,
                 office_tour: null, nfq_got_talent: null, party: null,
                 ao_dai_your_height: null, ao_dai_your_weight: null,
                 ao_dai_neck_size: null, ao_dai_shoulder_size: null,
                 ao_dai_bicept_size: null, ao_dai_arm_length_size: null, ao_dai_waist_size: null
             };
+
+            function progressCalculator() {
+                var allQuestions = Object.keys(summaryValues);
+                var answered = 0;
+                var total = allQuestions.length;
+
+                allQuestions.forEach(function(questionKey) {
+                    if (summaryValues[questionKey] !== null) {
+                        answered++;
+                    }
+                })
+
+                return answered + ' / ' + total;
+            }
 
             function costCalculator() {
                 var cost = 0;
@@ -984,7 +997,6 @@
             $('[data-summary-input]').change(function(e) {
                 var targetProperty = $(e.target).attr('data-target-property');
                 summaryValues[targetProperty] = e.target.value;
-
                 updateSummary();
             });
 
@@ -1005,6 +1017,7 @@
                 display.scrollTop(display.prop('scrollHeight'));
 
                 updateCostEstimation();
+                updateProgress();
             }
 
             function updateCostEstimation() {
@@ -1012,6 +1025,15 @@
                 var template = Handlebars.compile(summaryTemplate);
                 var compiled = template({ cost: costCalculator() });
                 var display = $('#cost-estimation');
+
+                display.html(compiled);
+            }
+
+            function updateProgress() {
+                var summaryTemplate = $('#progress-template').html();
+                var template = Handlebars.compile(summaryTemplate);
+                var compiled = template({ progress: progressCalculator() });
+                var display = $('#progress');
 
                 display.html(compiled);
             }
@@ -1069,6 +1091,12 @@
                     return;
                 }
 
+                var button = $(this);
+                button.addClass('is-loading');
+                if (button.hasClass('is-loading')) {
+                    return;
+                }
+
                 $.ajax({
                     url: 'https://script.google.com/macros/s/AKfycbz1kuDUFZuDcOZ00pPQd-1DGNo4KGzfzzS-mCDPRrz2aOnsmrpF/exec',
                     method: 'GET',
@@ -1077,6 +1105,12 @@
                 })
                 .then(function() {
                     alert('Thank you for submitting form');
+                })
+                .catch(function() {
+                    alert('There were an error submitting the form. Please contact us for further assistance');
+                })
+                .then(function() {
+                    button.removeClass('is-loading');
                 });
             });
         });
@@ -1108,6 +1142,9 @@
     <script type="text/x-template" id="cost-estimate-template">
         ----------- <br>
         Approx. cost: ${{ cost }} / person <br>
+    </script>
+    <script type="text/x-template" id="progress-template">
+        {{ progress }} answered
     </script>
 </body>
 
