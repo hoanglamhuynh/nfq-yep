@@ -106,16 +106,34 @@
             right: 0px;
             z-index: 100;
             position: absolute;
-            max-width: 250px;
+            width: 300px;
         }
 
         .summary-box.is_stuck {
             right: 64px;
         }
 
+        .paragraph {
+            max-width: 800px;
+        }
+
+        #summary {
+            font-size: 13px;
+            max-height: 130px;
+            overflow: auto;
+        }
+
+        #cost-estimation {
+            font-size: 13px;
+        }
+
         @media (max-width: 767px) {
             .hero-hoian {
                 height: 220px;
+            }
+
+            .summary-box {
+                display: none;
             }
         }
     </style>
@@ -128,26 +146,38 @@
             </div>
         </div>
     </section>
+    <section class="">
+
+    </section>
     <section class="section">
         <div class="container">
             <p class="title is-4">Dear beloved guests,</p>
-            <p class="subtitle is-6">NFQ Asia looks forward to seeing you soon!</p>
-            <p class="subtitle is-6">For your journey in Vietnam, we have 5 days of activities planned from Monday Jan 21 - Friday Jan 25, with some activities being hosted by NFQ and other optional “only in Vietnam” activities that we can help you to book. For those of you still considering whether or not to come, these activities are not to be missed!</p>
-            <p class="subtitle is-6">Please confirm which activities you are going to engage below so that we can prepare better.</p>
+            <p class="subtitle is-6 paragraph">NFQ Asia looks forward to seeing you soon!</p>
+            <p class="subtitle is-6 paragraph">For your journey in Vietnam, we have 5 days of activities planned from Monday Jan 21 - Friday Jan 25, with some activities being hosted by NFQ and other optional “only in Vietnam” activities that we can help you to book. For those of you still considering whether or not to come, these activities are not to be missed!</p>
+            <p class="subtitle is-6 paragraph">Please confirm which activities you are going to engage below so that we can prepare better.</p>
 
             <form class="form">
                 <div class="field">
-                    <label class="label">Email (*)</label>
-                    <input type="text" class="input max-width-400" placeholder="Valid email address" />
+                    <label class="label" for="inputEmail">Email (*)</label>
+                    <input type="text"
+                        data-summary-input
+                        data-target-property="email"
+                        id="inputEmail"
+                        class="input max-width-400"
+                        placeholder="Valid email address" />
                 </div>
                 <div class="field">
                     <label class="label">What's your name please?</label>
-                    <input type="text" class="input max-width-400" placeholder="What shall we call you" />
+                    <input type="text"
+                        data-summary-input
+                        data-target-property="name"
+                        class="input max-width-400"
+                        placeholder="What shall we call you" />
                 </div>
                 <div class="field">
-                    <label class="label">How many people will join the trip with you?</label>
+                    <label class="label">How many people will join the trip (including yourself)?</label>
                     <div class="select is-fullwidth max-width-400">
-                        <select>
+                        <select data-summary-input data-target-property="pax">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -159,13 +189,19 @@
             </form>
 
             <section class="summary-box">
-                <article class="message is-info">
+                <article class="message is-small">
                     <div class="message-header">
-                        <p>Info</p>
-                        <button class="delete" aria-label="delete"></button>
+                        <p>Your trip summary</p>
+                        <button type="button" class="button is-primary is-small download-pdf">
+                            Download as PDF
+                        </button>
                     </div>
                     <div class="message-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        <div id="summary" class="field">
+                            (nothing yet)
+                        </div>
+                        <div id="cost-estimation" class="field">
+                        </div>
                     </div>
                 </article>
             </section>
@@ -192,20 +228,6 @@
             <div class="field">
                 <label class="label question-title">
                     <span class="big-number">
-                        01
-                    </span>
-                    <span class="question-title__question">
-                        What time do you plan
-                        <br>
-                        to arrive at Danang Airport (DAD)?
-                    </span>
-                </label>
-                <input type="text" class="input max-width-400" placeholder="HH:MM in 24-hour format" />
-            </div>
-            <hr>
-            <div class="field">
-                <label class="label question-title">
-                    <span class="big-number">
                         02
                     </span>
                     <span class="question-title__question">
@@ -226,12 +248,20 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="danang_hoian" checked>
+                                        <input data-summary-radio-input
+                                            data-target-property="will_visit_hoi_an"
+                                            type="radio"
+                                            name="danang_hoian"
+                                            value="Yes">
                                         Yes, I would like to visit Hoi An
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="danang_hoian">
+                                        <input data-summary-radio-input
+                                            data-target-property="will_visit_hoi_an"
+                                            type="radio"
+                                            name="danang_hoian"
+                                            value="No">
                                         No thanks
                                     </label>
                                 </div>
@@ -264,12 +294,20 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="visit_nfq_danang" checked>
+                                        <input data-summary-radio-input
+                                            data-target-property="will_visit_da_nang_office"
+                                            type="radio"
+                                            name="visit_nfq_danang"
+                                            value="Yes" />
                                         Yes, I would like to visit NFQ office in Da Nang
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="visit_nfq_danang">
+                                        <input data-summary-radio-input
+                                            data-target-property="will_visit_da_nang_office"
+                                            type="radio"
+                                            name="visit_nfq_danang"
+                                            value="No" />
                                         No thanks
                                     </label>
                                 </div>
@@ -288,27 +326,43 @@
                         22.1.2019 Flight to Saigon
                     </span>
                 </label>
-                <p class="subtitle is-6 has-text-grey">
+                <p class="subtitle is-6 has-text-grey paragraph">
                     For those who join Da Nang trip, you should consider to book your flight back to SGN. You can choose to fly with Vietnam Airlines, Jetstar or Vietjet. The cost is around $70.
                 </p>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="return_saigon" checked>
+                        <input data-summary-radio-input
+                            data-target-property="flight_back_to_saigon"
+                            type="radio"
+                            name="return_saigon"
+                            value="Vietnam Airlines" />
                         Vietnam Airlines
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="return_saigon">
+                        <input data-summary-radio-input
+                            data-target-property="flight_back_to_saigon"
+                            type="radio"
+                            name="return_saigon"
+                            value="Jetstar" />
                         Jetstar
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="return_saigon">
+                        <input data-summary-radio-input
+                            data-target-property="flight_back_to_saigon"
+                            type="radio"
+                            name="return_saigon"
+                            value="Vietjet" />
                         Vietjet
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="return_saigon">
+                        <input data-summary-radio-input
+                            data-target-property="flight_back_to_saigon"
+                            type="radio"
+                            name="return_saigon"
+                            value="Other" />
                         Other airlines
                     </label>
                 </div>
@@ -343,17 +397,25 @@
                         <br>for ONLY our beloved Women!
                     </span>
                 </label>
-                <p class="subtitle is-6 has-text-grey">
+                <p class="subtitle is-6 has-text-grey paragraph">
                     <span class="has-text-primary">Spa day - $80/ person - Ladies</span>, you do not want to miss this!! After a long flight with activities, so we come up with an option how to encourage harmony and relaxation. The treatments include Sauna, Body massage with hot stone is perfect for us where you can enjoy 60 min Foot massage; Organic Body scrub, 30 mins; Organic Facial scrub and Clay Mask Pack (Sauna & Hot Spa), 30 mins.
                 </p>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="spa_in_sg" checked>
+                        <input data-summary-radio-input
+                            data-target-property="spa_day_for_women"
+                            type="radio"
+                            name="spa_in_sg"
+                            value="Yes" />
                         Yes, I would love to
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="spa_in_sg">
+                        <input data-summary-radio-input
+                            data-target-property="spa_day_for_women"
+                            type="radio"
+                            name="spa_in_sg"
+                            value="No" />
                         No thanks
                     </label>
                 </div>
@@ -385,17 +447,29 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class" checked>
+                                        <input data-summary-radio-input
+                                            data-target-property="cooking_class_option"
+                                            type="radio"
+                                            name="luke_cooking_class"
+                                            value="Private cooking class" />
                                         Private cooking class
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class">
+                                        <input data-summary-radio-input
+                                            data-target-property="cooking_class_option"
+                                            type="radio"
+                                            name="luke_cooking_class"
+                                            value="Teambuilding with Masterchef" />
                                         Teambuilding with Masterchef
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="luke_cooking_class">
+                                        <input data-summary-radio-input
+                                            data-target-property="cooking_class_option"
+                                            type="radio"
+                                            name="luke_cooking_class"
+                                            value="No" />
                                         No thanks
                                     </label>
                                 </div>
@@ -448,12 +522,20 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="mekong_trip" checked>
+                                        <input data-summary-radio-input
+                                            data-target-property="mekong_delta_trip"
+                                            type="radio"
+                                            name="mekong_trip"
+                                            value="Yes" />
                                         Yes, I would like to explore Mekong Delta
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="mekong_trip">
+                                        <input data-summary-radio-input
+                                            data-target-property="mekong_delta_trip"
+                                            type="radio"
+                                            name="mekong_trip"
+                                            value="No" />
                                         No thanks
                                     </label>
                                 </div>
@@ -485,12 +567,20 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="seventeen_bar" checked>
+                                        <input data-summary-radio-input
+                                            data-target-property="rock_music_bar"
+                                            type="radio"
+                                            name="seventeen_bar"
+                                            value="Yes" />
                                         Yes yes yes
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="seventeen_bar">
+                                        <input data-summary-radio-input
+                                            data-target-property="rock_music_bar"
+                                            type="radio"
+                                            name="seventeen_bar"
+                                            value="No" />
                                         No thanks
                                     </label>
                                 </div>
@@ -547,17 +637,29 @@
                                 </p>
                                 <div class="control">
                                     <label class="radio">
-                                        <input type="radio" name="conference" checked>
+                                        <input data-summary-radio-input
+                                            data-target-property="conference_option"
+                                            type="radio"
+                                            name="conference"
+                                            value="Business talks" />
                                         I'd love Business Track
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="conference">
+                                        <input data-summary-radio-input
+                                            data-target-property="conference_option"
+                                            type="radio"
+                                            name="conference"
+                                            value="Technical talks" />
                                         I'd love Technical Track
                                     </label>
                                     <br>
                                     <label class="radio">
-                                        <input type="radio" name="conference">
+                                        <input data-summary-radio-input
+                                            data-target-property="conference_option"
+                                            type="radio"
+                                            name="conference"
+                                            value="No" />
                                         No thanks
                                     </label>
                                 </div>
@@ -601,12 +703,20 @@
                 </p>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="visit_nfq_office" checked>
+                        <input data-summary-radio-input
+                            data-target-property="office_tour"
+                            type="radio"
+                            name="visit_nfq_office"
+                            value="Yes" />
                         Yes
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="visit_nfq_office">
+                        <input data-summary-radio-input
+                            data-target-property="office_tour"
+                            type="radio"
+                            name="visit_nfq_office"
+                            value="No" />
                         No thanks
                     </label>
                 </div>
@@ -626,12 +736,20 @@
                 </p>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="watch_nfq_got_talent" checked>
+                        <input data-summary-radio-input
+                            data-target-property="nfq_got_talent"
+                            type="radio"
+                            name="watch_nfq_got_talent"
+                            value="Yes" />
                         Yes
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="watch_nfq_got_talent">
+                        <input data-summary-radio-input
+                            data-target-property="nfq_got_talent"
+                            type="radio"
+                            name="watch_nfq_got_talent"
+                            value="No" />
                         No thanks
                     </label>
                 </div>
@@ -647,18 +765,30 @@
                 </label>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="year_end_party">
-                        Yes
+                        <input data-summary-radio-input
+                            data-target-property="party"
+                            type="radio"
+                            name="year_end_party"
+                            value="Heall yeah !!!" />
+                        Hell yeah !!!
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="year_end_party">
+                        <input data-summary-radio-input
+                            data-target-property="party"
+                            type="radio"
+                            name="year_end_party"
+                            value="Yes Yes!" />
                         Yes Yes!
                     </label>
                     <br>
                     <label class="radio">
-                        <input type="radio" name="year_end_party" checked>
-                        Hell yea!!!
+                        <input data-summary-radio-input
+                            data-target-property="party"
+                            type="radio"
+                            name="year_end_party"
+                            value="Yes" />
+                        Yes
                     </label>
                 </div>
             </div>
@@ -685,40 +815,288 @@
                     </p>
 
                     <div class="field">
-                        <label class="label">Your neck size?</label>
-                        <input type="text" class="input max-width-400" placeholder="Measured in cm" />
+                        <label class="label">
+                            Your neck size?
+                        </label>
+                        <input type="text" data-summary-input data-target-property="ao_dai_neck_size"
+                            class="input max-width-400" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your shoulder size?</label>
-                        <input type="text" class="input max-width-400" placeholder="Measured in cm" />
+                        <input type="text" data-summary-input data-target-property="ao_dai_shoulder_size"
+                            class="input max-width-400" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your Bicept size?</label>
-                        <input type="text" class="input max-width-400" placeholder="Measured in cm" />
+                        <input type="text" data-summary-input data-target-property="ao_dai_bicept_size"
+                            class="input max-width-400" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your Arm-length size?</label>
-                        <input type="text" class="input max-width-400" placeholder="Measured in cm" />
+                        <input type="text" data-summary-input data-target-property="ao_dai_arm_length_size"
+                            class="input max-width-400" placeholder="Measured in cm" />
                     </div>
                     <div class="field">
                         <label class="label">Your Waist size?</label>
-                        <input type="text" class="input max-width-400" placeholder="Measured in cm" />
+                        <input type="text" data-summary-input data-target-property="ao_dai_waist_size"
+                            class="input max-width-400" placeholder="Measured in cm" />
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <script src="./js/jquery-sticky-kit.min.js"></script>
     <script>
         $(document).ready(function() {
             var summaryBox = $('.summary-box');
+            var isOnMobile = window.matchMedia('(max-width: 767px)').matches;
+
             summaryBox.stick_in_parent({
                 parent: 'body',
-                offset_top: 24,
+                offset_top: !isOnMobile ? 24 : 0,
                 spacer: false
-            })
+            });
+
+            var summaryValues = {
+                email: null, name: null, pax: 1,
+                time_arrived_at_da_nang: null, will_visit_hoi_an: null, will_visit_da_nang_office: null, flight_back_to_saigon: null,
+                spa_day_for_women: null, cooking_class_option: null,
+                mekong_delta_trip: null, rock_music_bar: null,
+                conference_option: null,
+                office_tour: null, nfq_got_talent: null, party: null,
+                ao_dai_neck_size: null, ao_dai_shoulder_size: null, ao_dai_bicept_size: null, ao_dai_arm_length_size: null, ao_dai_waist_size: null
+            };
+
+            function costCalculator() {
+                var cost = 0;
+
+                if (summaryValues.spa_day_for_women === 'Yes') { cost += 80; }
+
+                if (summaryValues.cooking_class_option === 'Private cooking class') { cost += 67; }
+
+                if (summaryValues.cooking_class_option === 'Teambuilding with Masterchef') { cost += 57; }
+
+                if (summaryValues.mekong_delta_trip === 'Yes') { cost += 96; }
+
+                if (summaryValues.flight_back_to_saigon !== null) { cost += 70; }
+
+                return cost;
+            }
+
+            $('[data-summary-input]').change(function(e) {
+                var targetProperty = $(e.target).attr('data-target-property');
+                summaryValues[targetProperty] = e.target.value;
+
+                updateSummary();
+            });
+
+            $('[data-summary-radio-input]').change(function(e) {
+                var targetProperty = $(e.target).attr('data-target-property');
+                var which_is_selected = $('[data-target-property=' + targetProperty + ']:checked').val();
+                summaryValues[targetProperty] = which_is_selected;
+                updateSummary();
+            });
+
+            function updateSummary() {
+                var summaryTemplate = $('#summary-template').html();
+                var template = Handlebars.compile(summaryTemplate);
+                var compiled = template(summaryValues);
+                var display = $('#summary');
+
+                display.html(compiled);
+                display.scrollTop(display.prop('scrollHeight'));
+
+                updateCostEstimation();
+            }
+
+            function updateCostEstimation() {
+                var summaryTemplate = $('#cost-estimate-template').html();
+                var template = Handlebars.compile(summaryTemplate);
+                var compiled = template({ cost: costCalculator() });
+                var display = $('#cost-estimation');
+
+                display.html(compiled);
+            }
+
+            function validateForm() {
+                if (summaryValues.email === null || summary.name === null) {
+                    alert('Please fill in Email and Name');
+                    $('[data-target-property=email]').get(0).scrollIntoViewIfNeeded();
+
+                    return false;
+                }
+                else if (summaryValues.time_arrived_at_da_nang === null || summaryValues.will_visit_hoi_an === null ||
+                        summaryValues.will_visit_da_nang_office === null || summaryValues.flight_back_to_saigon === null
+                ) {
+                    alert('Please complete the section: Da Nang/Hoi An - 20.1.2019 to 22.1.2019');
+                    $('[data-target-property=time_arrived_at_da_nang]').get(0).scrollIntoViewIfNeeded();
+
+                    return false;
+                }
+                else if (summaryValues.spa_day_for_women === null || summaryValues.cooking_class_option === null) {
+                    alert('Please complete the section: Saigon Refreshment Day - 22 January');
+                    $('[data-target-property=spa_day_for_women]').get(0).scrollIntoViewIfNeeded();
+
+                    return false;
+                }
+                else if (summaryValues.mekong_delta_trip === null || summaryValues.rock_music_bar === null) {
+                    alert('Please complete section: Adventure Day - 23 January');
+                    $('[data-target-property=mekong_delta_trip]').get(0).scrollIntoViewIfNeeded();
+
+                    return false;
+                }
+                else if (summaryValues.conference_option === null) {
+                    alert('Please complete section: Conference Day - 24.1.2019 SAIGON');
+                    $('[data-target-property=conference_option]').get(0).scrollIntoViewIfNeeded();
+
+                    return false;
+                }
+                else if (summaryValues.office_tour === null || summaryValues.nfq_got_talent === null || summaryValues.party === null) {
+                    alert('Please complete section: 25.1.2019 SAIGON - PARTY DAY');
+                    $('[data-target-property=office_tour]').get(0).scrollIntoViewIfNeeded();
+
+                    return false;
+                }
+
+                return true;
+            }
+
+            $('.download-pdf').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'https://script.google.com/macros/s/AKfycbz1kuDUFZuDcOZ00pPQd-1DGNo4KGzfzzS-mCDPRrz2aOnsmrpF/exec',
+                    method: 'GET',
+                    dataType: 'json',
+                    data: {
+                        email: 'hoanglam.huynh@gmail.com',
+                        name: 'Lam Thon'
+                    }
+                })
+                .then(function() {
+                    alert('Thank you for submitting form');
+                });
+                // var result = validateForm();
+                //
+                // if (!result) {
+                //     return;
+                // }
+                //
+                // var doc = new jsPDF();
+                // var pdfTemplate = $('#pdf-template').html();
+                // var template = Handlebars.compile(pdfTemplate);
+                // var compiled = template({
+                //     summaryValues: summaryValues,
+                //     isUsingSpa: summaryValues.spa_day_for_women === 'Yes',
+                //     isUsingPrivateCookingClass: summaryValues.cooking_class_option === 'Private cooking class',
+                //     isTeamBuildingWithMasterchef: summaryValues.cooking_class_option === 'Teambuilding with Masterchef',
+                //     isGoingMekongTrip: summaryValues.mekong_delta_trip === 'Yes',
+                //     paxCost: costCalculator()
+                // });
+                //
+                //
+                // var img = new Image;
+                // img.onload = function() {
+                //     doc.addImage(this, 10, 10, 20, 20);
+                //     doc.fromHTML(compiled, 10, 40)
+                //     doc.save('nfq-yep.pdf');
+                // };
+                //
+                // img.src = './img/square-logo.png';
+                // document.body.appendChild(img);
+            });
         });
+    </script>
+    <script type="text/x-template" id="summary-template">
+        {{#if email}}<strong>Email:</strong> {{ email }}<br/>{{/if}}
+        {{#if name}}<strong>Name:</strong> {{ name }}<br>{{/if}}
+        {{#if pax}}<strong>Number of people:</strong> {{ pax }}<br>{{/if}}
+        {{#if time_arrived_at_da_nang}}<strong>Arrive at Da Nang airport at:</strong> {{ time_arrived_at_da_nang }}<br>{{/if}}
+        {{#if will_visit_hoi_an}}<strong>Visit Hoi An:</strong> {{ will_visit_hoi_an }}<br>{{/if}}
+        {{#if will_visit_da_nang_office}}<strong>Visit Da Nang office:</strong> {{ will_visit_da_nang_office }}<br>{{/if}}
+        {{#if flight_back_to_saigon}}<strong>Flight to Saigon:</strong> {{ flight_back_to_saigon }}<br>{{/if}}
+        {{#if spa_day_for_women}}<strong>Spa day:</strong> {{ spa_day_for_women }}<br>{{/if}}
+        {{#if cooking_class_option}}<strong>Cooking class:</strong> {{ cooking_class_option }}<br>{{/if}}
+        {{#if mekong_delta_trip}}<strong>Mekong on scooter:</strong> {{ mekong_delta_trip }}<br>{{/if}}
+        {{#if rock_music_bar}}<strong>Rock music bar:</strong> {{ rock_music_bar }}<br>{{/if}}
+        {{#if conference_option}}<strong>Conference preference:</strong> {{ conference_option }}<br>{{/if}}
+        {{#if office_tour}}<strong>Office tour:</strong> {{ office_tour }}<br>{{/if}}
+        {{#if nfq_got_talent}}<strong>NFQ Got Talent:</strong> {{ nfq_got_talent }}<br>{{/if}}
+        {{#if party}}<strong>Year End Party:</strong> {{ party }}<br>{{/if}}
+        {{#if ao_dai_neck_size}}<strong>Aodai neck size:</strong> {{ ao_dai_neck_size }} cm<br>{{/if}}
+        {{#if ao_dai_shoulder_size}}<strong>Aodai shoulder size:</strong> {{ ao_dai_shoulder_size }} cm<br>{{/if}}
+        {{#if ao_dai_bicept_size}}<strong>Aodai bicept size:</strong> {{ ao_dai_bicept_size }} cm<br>{{/if}}
+        {{#if ao_dai_arm_length_size}}<strong>Aodai arm-length size:</strong> {{ ao_dai_arm_length_size }} cm<br>{{/if}}
+        {{#if ao_dai_waist_size}}<strong>Aodai waist size:</strong> {{ ao_dai_waist_size }} cm<br>{{/if}}
+    </script>
+    <script type="text/x-template" id="cost-estimate-template">
+        ----------- <br>
+        Approx. cost: ${{ cost }} / person <br>
+    </script>
+    <script type="text/x-template" id="pdf-template">
+        <div style="font-size: 13px; margin-bottom: 20px;">
+            Dear {{ summaryValues.name }},
+        </div>
+        <div style="font-size: 13px; margin-bottom: 20px;">
+            This document summarizes your trip itinerary at NFQ Asia - Year End Party event. <br />Please bring this document or send to us via email.
+        </div>
+        <div style="font-size: 13px; margin-bottom: 20px;">
+            Estimated cost is at ${{ paxCost }} / person
+        </div>
+        <div style="font-size: 13px; margin-bottom: 20px;">
+            <div><strong>Email:</strong> {{ summaryValues.email }}</div>
+            <div><strong>Name:</strong> {{ summaryValues.name }}</div>
+            <div><strong>Number of people:</strong> {{ summaryValues.pax }}</div>
+            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
+                <strong>Da Nang/Hoi An - 20.1.2019 to 22.1.2019</strong>
+            </div>
+            <div><strong>Arrive at Da Nang airport at:</strong> {{ summaryValues.time_arrived_at_da_nang }}</div>
+            <div><strong>Visit Hoi An:</strong> {{ summaryValues.will_visit_hoi_an }}</div>
+            <div><strong>Visit Da Nang office:</strong> {{ summaryValues.will_visit_da_nang_office }}</div>
+            <div>
+                <strong>Flight to Saigon:</strong> {{ summaryValues.flight_back_to_saigon }} (approx. $70 / person)
+            </div>
+            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
+                <strong>Saigon Refreshment Day - 22 January</strong>
+            </div>
+            <div>
+                <strong>Spa day:</strong> {{ summaryValues.spa_day_for_women }}
+                {{#if isUsingSpa}}($80 / person){{/if}}
+            </div>
+            <div>
+                <strong>Cooking class:</strong> {{ summaryValues.cooking_class_option }}
+                {{#if isUsingPrivateCookingClass}}($67 / person){{/if}}
+                {{#if isTeamBuildingWithMasterchef}}($57 / person){{/if}}
+            </div>
+            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
+                <strong>Adventure Day - 23 January</strong>
+            </div>
+            <div>
+                <strong>Mekong on scooter:</strong> {{ summaryValues.mekong_delta_trip }}
+                {{#if isGoingMekongTrip}}($96 / person){{/if}}
+            </div>
+            <div><strong>Rock music bar:</strong> {{ summaryValues.rock_music_bar }}</div>
+            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
+                <strong>Conference Day - 24.1.2019 SAIGON</strong>
+            </div>
+            <div><strong>Conference preference:</strong> {{ summaryValues.conference_option }}</div>
+            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
+                <strong>25.1.2019 SAIGON - PARTY DAY</strong>
+            </div>
+            <div><strong>Office tour:</strong> {{ summaryValues.office_tour }}</div>
+            <div><strong>NFQ Got Talent:</strong> {{ summaryValues.nfq_got_talent }}</div>
+            <div><strong>Year End Party:</strong> {{ summaryValues.party }}</div>
+            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
+                <strong>Bonus: Ao dai</strong>
+            </div>
+            <div><strong>Ao dai neck size:</strong> {{ summaryValues.ao_dai_neck_size }}cm</div>
+            <div><strong>Ao dai shoulder size:</strong> {{ summaryValues.ao_dai_shoulder_size }}cm</div>
+            <div><strong>Ao dai bicept size:</strong> {{ summaryValues.ao_dai_bicept_size }}cm</div>
+            <div><strong>Ao dai arm length:</strong> {{ summaryValues.ao_dai_arm_length_size }}cm</div>
+            <div><strong>Ao dai waist size:</strong> {{ summaryValues.ao_dai_waist_size }}cm</div>
+        </div>
     </script>
 </body>
 
