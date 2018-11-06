@@ -19,6 +19,16 @@
             font-weight: bold;
         }
 
+        ::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 7px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0,0,0,.5);
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+        }
+
         .hero-main {
             background: url('./img/hero.jpg');
             background-size: cover;
@@ -137,6 +147,9 @@
             font-size: 13px;
             max-height: 100px;
             overflow: auto;
+            outline: 1px solid #e6e2e2;
+            background-color: #fff;
+            padding: 5px;
         }
 
         .cost-estimation {
@@ -754,7 +767,7 @@
                     </span>
                 </label>
                 <p class="subtitle is-6 has-text-grey paragraph">
-                    <span class="has-text-primary">Cost XXX $ / Person</span> <br>
+                    <span class="has-text-primary">Cost 89 $ / Person</span> <br>
                     Jump again on the back of a Vespa, zip through the streets of Saiogn by night and join us to experience original vietnamese cuisine. Again, we personally made sure that this is a non-touristy experience where you will get a real insight into original vietnamese food. If you have any dietary needs, don't worry, we will take care of you. Sebastian did test this personally last week - it's amazing, don't hesitate and join us!
                 </p>
                 <div class="control">
@@ -1017,6 +1030,8 @@
                 if (summaryValues.cooking_class_option === 'Yes') { cost += 67; }
 
                 if (summaryValues.mekong_delta_trip === 'Yes') { cost += 96; }
+
+                if (summaryValues.saigon_after_dark_food_tour === 'Yes') { cost += 89; }
 
                 if (summaryValues.flight_back_to_saigon !== null &&
                     summaryValues.flight_back_to_saigon !== 'NotFlying')
