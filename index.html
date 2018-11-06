@@ -192,8 +192,8 @@
                 <article class="message is-small">
                     <div class="message-header">
                         <p>Your trip summary</p>
-                        <button type="button" class="button is-primary is-small download-pdf">
-                            Download as PDF
+                        <button type="button" class="button is-primary is-small submit-form">
+                            Submit my response
                         </button>
                     </div>
                     <div class="message-body">
@@ -862,7 +862,7 @@
 
             var summaryValues = {
                 email: null, name: null, pax: 1,
-                time_arrived_at_da_nang: null, will_visit_hoi_an: null, will_visit_da_nang_office: null, flight_back_to_saigon: null,
+                will_visit_hoi_an: null, will_visit_da_nang_office: null, flight_back_to_saigon: null,
                 spa_day_for_women: null, cooking_class_option: null,
                 mekong_delta_trip: null, rock_music_bar: null,
                 conference_option: null,
@@ -928,11 +928,12 @@
 
                     return false;
                 }
-                else if (summaryValues.time_arrived_at_da_nang === null || summaryValues.will_visit_hoi_an === null ||
-                        summaryValues.will_visit_da_nang_office === null || summaryValues.flight_back_to_saigon === null
+                else if (summaryValues.will_visit_hoi_an === null ||
+                        summaryValues.will_visit_da_nang_office === null ||
+                        summaryValues.flight_back_to_saigon === null
                 ) {
                     alert('Please complete the section: Da Nang/Hoi An - 20.1.2019 to 22.1.2019');
-                    $('[data-target-property=time_arrived_at_da_nang]').get(0).scrollIntoViewIfNeeded();
+                    $('[data-target-property=will_visit_hoi_an]').get(0).scrollIntoViewIfNeeded();
 
                     return false;
                 }
@@ -964,48 +965,24 @@
                 return true;
             }
 
-            $('.download-pdf').click(function(e) {
+            $('.submit-form').click(function(e) {
                 e.preventDefault();
+
+                var validation = validateForm();
+
+                if (validation === false) {
+                    return;
+                }
+
                 $.ajax({
                     url: 'https://script.google.com/macros/s/AKfycbz1kuDUFZuDcOZ00pPQd-1DGNo4KGzfzzS-mCDPRrz2aOnsmrpF/exec',
                     method: 'GET',
                     dataType: 'json',
-                    data: {
-                        email: 'hoanglam.huynh@gmail.com',
-                        name: 'Lam Thon'
-                    }
+                    data: summaryValues
                 })
                 .then(function() {
                     alert('Thank you for submitting form');
                 });
-                // var result = validateForm();
-                //
-                // if (!result) {
-                //     return;
-                // }
-                //
-                // var doc = new jsPDF();
-                // var pdfTemplate = $('#pdf-template').html();
-                // var template = Handlebars.compile(pdfTemplate);
-                // var compiled = template({
-                //     summaryValues: summaryValues,
-                //     isUsingSpa: summaryValues.spa_day_for_women === 'Yes',
-                //     isUsingPrivateCookingClass: summaryValues.cooking_class_option === 'Private cooking class',
-                //     isTeamBuildingWithMasterchef: summaryValues.cooking_class_option === 'Teambuilding with Masterchef',
-                //     isGoingMekongTrip: summaryValues.mekong_delta_trip === 'Yes',
-                //     paxCost: costCalculator()
-                // });
-                //
-                //
-                // var img = new Image;
-                // img.onload = function() {
-                //     doc.addImage(this, 10, 10, 20, 20);
-                //     doc.fromHTML(compiled, 10, 40)
-                //     doc.save('nfq-yep.pdf');
-                // };
-                //
-                // img.src = './img/square-logo.png';
-                // document.body.appendChild(img);
             });
         });
     </script>
@@ -1013,7 +990,6 @@
         {{#if email}}<strong>Email:</strong> {{ email }}<br/>{{/if}}
         {{#if name}}<strong>Name:</strong> {{ name }}<br>{{/if}}
         {{#if pax}}<strong>Number of people:</strong> {{ pax }}<br>{{/if}}
-        {{#if time_arrived_at_da_nang}}<strong>Arrive at Da Nang airport at:</strong> {{ time_arrived_at_da_nang }}<br>{{/if}}
         {{#if will_visit_hoi_an}}<strong>Visit Hoi An:</strong> {{ will_visit_hoi_an }}<br>{{/if}}
         {{#if will_visit_da_nang_office}}<strong>Visit Da Nang office:</strong> {{ will_visit_da_nang_office }}<br>{{/if}}
         {{#if flight_back_to_saigon}}<strong>Flight to Saigon:</strong> {{ flight_back_to_saigon }}<br>{{/if}}
@@ -1034,69 +1010,6 @@
     <script type="text/x-template" id="cost-estimate-template">
         ----------- <br>
         Approx. cost: ${{ cost }} / person <br>
-    </script>
-    <script type="text/x-template" id="pdf-template">
-        <div style="font-size: 13px; margin-bottom: 20px;">
-            Dear {{ summaryValues.name }},
-        </div>
-        <div style="font-size: 13px; margin-bottom: 20px;">
-            This document summarizes your trip itinerary at NFQ Asia - Year End Party event. <br />Please bring this document or send to us via email.
-        </div>
-        <div style="font-size: 13px; margin-bottom: 20px;">
-            Estimated cost is at ${{ paxCost }} / person
-        </div>
-        <div style="font-size: 13px; margin-bottom: 20px;">
-            <div><strong>Email:</strong> {{ summaryValues.email }}</div>
-            <div><strong>Name:</strong> {{ summaryValues.name }}</div>
-            <div><strong>Number of people:</strong> {{ summaryValues.pax }}</div>
-            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
-                <strong>Da Nang/Hoi An - 20.1.2019 to 22.1.2019</strong>
-            </div>
-            <div><strong>Arrive at Da Nang airport at:</strong> {{ summaryValues.time_arrived_at_da_nang }}</div>
-            <div><strong>Visit Hoi An:</strong> {{ summaryValues.will_visit_hoi_an }}</div>
-            <div><strong>Visit Da Nang office:</strong> {{ summaryValues.will_visit_da_nang_office }}</div>
-            <div>
-                <strong>Flight to Saigon:</strong> {{ summaryValues.flight_back_to_saigon }} (approx. $70 / person)
-            </div>
-            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
-                <strong>Saigon Refreshment Day - 22 January</strong>
-            </div>
-            <div>
-                <strong>Spa day:</strong> {{ summaryValues.spa_day_for_women }}
-                {{#if isUsingSpa}}($80 / person){{/if}}
-            </div>
-            <div>
-                <strong>Cooking class:</strong> {{ summaryValues.cooking_class_option }}
-                {{#if isUsingPrivateCookingClass}}($67 / person){{/if}}
-                {{#if isTeamBuildingWithMasterchef}}($57 / person){{/if}}
-            </div>
-            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
-                <strong>Adventure Day - 23 January</strong>
-            </div>
-            <div>
-                <strong>Mekong on scooter:</strong> {{ summaryValues.mekong_delta_trip }}
-                {{#if isGoingMekongTrip}}($96 / person){{/if}}
-            </div>
-            <div><strong>Rock music bar:</strong> {{ summaryValues.rock_music_bar }}</div>
-            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
-                <strong>Conference Day - 24.1.2019 SAIGON</strong>
-            </div>
-            <div><strong>Conference preference:</strong> {{ summaryValues.conference_option }}</div>
-            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
-                <strong>25.1.2019 SAIGON - PARTY DAY</strong>
-            </div>
-            <div><strong>Office tour:</strong> {{ summaryValues.office_tour }}</div>
-            <div><strong>NFQ Got Talent:</strong> {{ summaryValues.nfq_got_talent }}</div>
-            <div><strong>Year End Party:</strong> {{ summaryValues.party }}</div>
-            <div style="font-size: 14px; margin-top: 15px; margin-bottom: 5px; color: #ff6b00">
-                <strong>Bonus: Ao dai</strong>
-            </div>
-            <div><strong>Ao dai neck size:</strong> {{ summaryValues.ao_dai_neck_size }}cm</div>
-            <div><strong>Ao dai shoulder size:</strong> {{ summaryValues.ao_dai_shoulder_size }}cm</div>
-            <div><strong>Ao dai bicept size:</strong> {{ summaryValues.ao_dai_bicept_size }}cm</div>
-            <div><strong>Ao dai arm length:</strong> {{ summaryValues.ao_dai_arm_length_size }}cm</div>
-            <div><strong>Ao dai waist size:</strong> {{ summaryValues.ao_dai_waist_size }}cm</div>
-        </div>
     </script>
 </body>
 
