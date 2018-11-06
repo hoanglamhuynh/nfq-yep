@@ -19,6 +19,7 @@
             background-position-y: bottom;
             background-position-x: 50%;
             height: 100vh;
+            position: relative;
         }
 
         .hero-hoian {
@@ -126,6 +127,33 @@
             font-size: 13px;
         }
 
+        .hero-title {
+            position: relative;
+            top: 0px;
+            right: 20px;
+            text-align: right;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        .company-logo {
+            width: 80px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 1px solid #fff;
+        }
+
+        .hero-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0.85;
+        }
+
         @media (max-width: 767px) {
             .hero-hoian {
                 height: 220px;
@@ -141,8 +169,13 @@
 <body>
     <section class="hero is-info is-large">
         <div class="hero-body hero-main">
-            <div class="container">
-            </div>
+            <img class="hero-gradient-overlay" src="./img/gradient-overlay.png" />
+            <p class="title hero-title">
+                NFQ Asia<br>
+                Year End Party<br>
+                Registration Form
+            </p>
+            <img class="company-logo" src="./img/square-logo.png" />
         </div>
     </section>
     <section class="">
@@ -880,7 +913,6 @@
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <script src="./js/jquery-sticky-kit.min.js"></script>
     <script>
         $(document).ready(function() {
