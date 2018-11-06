@@ -162,7 +162,7 @@
             columns: 3;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .hero-hoian, .hero-saigon, .hero-mekong, .hero-conference { height: 220px; }
             .hero-party, .hero-party2 { height: 190px; }
             .hero-title {
@@ -181,7 +181,10 @@
             .text-input-small, .text-input-large { max-width: 100%; }
             .control { padding-left: 5px; }
             .message-header { flex-direction: column;}
-            .footer-summary { columns: 2; }
+            .footer-summary {
+                columns: 2;
+                max-height: initial !important;
+            }
         }
     </style>
 </head>
@@ -945,6 +948,7 @@
     <section class="section">
         <div class="container" style="text-align: center">
             <button class="button is-success submit-form">Submit my response</button>
+            <br>
             <br>
             <div class="field progress-indicator"></div>
             <br>
