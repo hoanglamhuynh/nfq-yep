@@ -249,16 +249,26 @@
                     placeholder="What shall we call you" />
             </div>
             <div class="field">
-                <label class="label">How many are you?</label>
-                <div class="select is-fullwidth text-input-large">
-                    <select data-summary-input data-target-property="pax">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="4+">4+</option>
-                    </select>
+                <label class="label">What is your gender?</label>
+                <div class="control">
+                    <label class="radio">
+                        <input data-summary-radio-input data-target-property="gender" type="radio" name="gender" value="Male" />
+                        Male
+                    </label>
+                    <br>
+                    <label class="radio">
+                        <input data-summary-radio-input data-target-property="gender" type="radio" name="gender" value="Female" />
+                        Female
+                    </label>
+                    <br>
                 </div>
+
+            </div>
+            <div class="field">
+                <label class="label">You are joining as a friend of? (Optional - only in case you are invited by a
+                    friend of NFQ)</label>
+                <input type="text" data-summary-input data-target-property="friend_of" class="input text-input-large"
+                    placeholder="Tell us your friend name" />
             </div>
             <section class="summary-box">
                 <article class="message is-small">
@@ -883,7 +893,8 @@
                         As the best Aodai requires precise measurements of the wearer, we need your measurement details
                         so that we can prepare the gift in advance. <br><br>
 
-                        But if you don’t have enough time, just tell us your regular T-shirt size is sufficient.
+                        But if you don’t have enough time, just tell us your regular T-shirt size
+                        <span class="has-text-primary">(EUROPEAN SIZES)</span> is sufficient.
                         <br><br>
                     </p>
 
@@ -996,7 +1007,7 @@
             });
 
             var summaryValues = {
-                email: null, name: null, pax: 1,
+                email: null, name: null, gender: null, friend_of: null,
                 will_visit_hoi_an: null, will_visit_da_nang_office: null, flight_back_to_saigon: null,
                 spa_day_for_women: null, cooking_class_option: null,
                 mekong_delta_trip: null, rock_music_bar: null,
@@ -1013,7 +1024,12 @@
             function progressCalculator() {
                 var allQuestions = Object.keys(summaryValues);
                 var answered = 0;
-                var total = allQuestions.length;
+                var total = 0;
+                if (summaryValues['ao_dai_regular_size'] !== 'Detail') {
+                    total = allQuestions.length - 7;
+                } else {
+                    total = allQuestions.length;
+                }
 
                 allQuestions.forEach(function (questionKey) {
                     if (summaryValues[questionKey] !== null) {
@@ -1094,8 +1110,8 @@
             }
 
             function validateForm() {
-                if (summaryValues.email === null || summaryValues.name === null) {
-                    alert('Please fill in Email and Name');
+                if (summaryValues.email === null || summaryValues.name === null || summaryValues.gender === null) {
+                    alert('Please fill in Email, Name and Gender');
                     $('[data-target-property=email]').get(0).scrollIntoViewIfNeeded();
 
                     return false;
@@ -1176,7 +1192,8 @@
     <script type="text/x-template" id="summary-template">
         {{#if email}}<strong>Email:</strong> {{ email }}<br/>{{/if}}
         {{#if name}}<strong>Name:</strong> {{ name }}<br>{{/if}}
-        {{#if pax}}<strong>Number of people:</strong> {{ pax }}<br>{{/if}}
+        {{#if gender}}<strong>Gender:</strong> {{ gender }}<br>{{/if}}
+        {{#if friend_of}}<strong>Number of people:</strong> {{ friend_of }}<br>{{/if}}
         {{#if will_visit_hoi_an}}<strong>Visit Hoi An:</strong> {{ will_visit_hoi_an }}<br>{{/if}}
         {{#if will_visit_da_nang_office}}<strong>Visit Da Nang office:</strong> {{ will_visit_da_nang_office }}<br>{{/if}}
         {{#if flight_back_to_saigon}}<strong>Flight to Saigon:</strong> {{ flight_back_to_saigon }}<br>{{/if}}
